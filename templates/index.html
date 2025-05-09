@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Requêtes API avec JWT</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button onclick="lancerRequetes()">Lancer les requêtes</button>
+
+  <script>
+    const apikey = "eyJ4NXQiOiJOVGRtWmpNNFpEazNOalkwWXpjNU1tWm1PRGd3TVRFM01XWXdOREU1TVdSbFpEZzROemM0WkE9PSIsImtpZCI6ImdhdGV3YXlfY2VydGlmaWNhdGVfYWxpYXMiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbkBjYXJib24uc3VwZXIiLCJhcHBsaWNhdGlvbiI6eyJvd25lciI6ImFkbWluIiwidGllclF1b3RhVHlwZSI6bnVsbCwidGllciI6IlVubGltaXRlZCIsIm5hbWUiOiJhcHBfZm9yX2FwaV93aXRoX3N3YWdlciIsImlkIjoyLCJ1dWlkIjoiNWI0YWZhMjgtOTU4MC00MjgyLTg4ZjgtY2QwZmUxODYzMGQxIn0sImlzcyI6Imh0dHBzOlwvXC9sb2NhbGhvc3Q6OTQ0M1wvb2F1dGgyXC90b2tlbiIsInRpZXJJbmZvIjp7IkdvbGQiOnsidGllclF1b3RhVHlwZSI6InJlcXVlc3RDb3VudCIsImdyYXBoUUxNYXhDb21wbGV4aXR5IjowLCJncmFwaFFMTWF4RGVwdGgiOjAsInN0b3BPblF1b3RhUmVhY2giOnRydWUsInNwaWtlQXJyZXN0TGltaXQiOjAsInNwaWtlQXJyZXN0VW5pdCI6bnVsbH19LCJrZXl0eXBlIjoiU0FOREJPWCIsInBlcm1pdHRlZFJlZmVyZXIiOiIiLCJzdWJzY3JpYmVkQVBJcyI6W3sic3Vic2NyaWJlclRlbmFudERvbWFpbiI6ImNhcmJvbi5zdXBlciIsIm5hbWUiOiJhcGktc3dnZXIiLCJjb250ZXh0IjoiXC9laWQtZXh0ZXJuYWxcL3YxIiwicHVibGlzaGVyIjoiYWRtaW4iLCJ2ZXJzaW9uIjoidjEiLCJzdWJzY3JpcHRpb25UaWVyIjoiR29sZCJ9XSwidG9rZW5fdHlwZSI6ImFwaUtleSIsInBlcm1pdHRlZElQIjoiIiwiaWF0IjoxNzQ2NzgyMTkyLCJqdGkiOiI3YzZlZDEzYy1iNmNmLTQwMmEtYjkzNC1kMGNmMmI2ODI4MjYifQ==.ss_fh9pujzpZ-I1D8sWR702TWnu9dq2OjaRnMaLzTXDN3lIrDoXn5-nRzEuxuZ2B3X2NugQ6A0gFdtWx3u2gvExD_v_g46gnfcah1pS5rtIk83QTiSMFt1EOt7kwaEH8njRchl9VlqvvbA3teE21iJBR5KV8wRRFd9IazO-4PlVIiuqYbEqLp4y-WvsQVTyLipgCmu_hcIBK3apshdkGnbNCykuF3Engh_7mxpthcQDOQLcpgHI8hwRu6IZthhrS_GXk-t0DImwjigICpwZnF4uesXlcLmb2I7HIYK53kq41A7ht-PmKi_1DfebimtYUTRCYfnNvPfDMjslajRotrQ==";
+
+    async function lancerRequetes() {
+      const url = 'http://localhost:8280/eid-external/v1/users/all';
+
+      for (let i = 1; i <= 1; i++) {
+        try {
+          const response = await fetch(url, {
+            method: 'GET',
+            // headers: {
+            
+            //   'apikey': "eyJ4NXQiOiJOVGRtWmpNNFpEazNOalkwWXpjNU1tWm1PRGd3TVRFM01XWXdOREU1TVdSbFpEZzROemM0WkE9PSIsImtpZCI6ImdhdGV3YXlfY2VydGlmaWNhdGVfYWxpYXMiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbkBjYXJib24uc3VwZXIiLCJhcHBsaWNhdGlvbiI6eyJvd25lciI6ImFkbWluIiwidGllclF1b3RhVHlwZSI6bnVsbCwidGllciI6IlVubGltaXRlZCIsIm5hbWUiOiJhcHBfZm9yX2FwaV93aXRoX3N3YWdlciIsImlkIjoyLCJ1dWlkIjoiNWI0YWZhMjgtOTU4MC00MjgyLTg4ZjgtY2QwZmUxODYzMGQxIn0sImlzcyI6Imh0dHBzOlwvXC9sb2NhbGhvc3Q6OTQ0M1wvb2F1dGgyXC90b2tlbiIsInRpZXJJbmZvIjp7IkdvbGQiOnsidGllclF1b3RhVHlwZSI6InJlcXVlc3RDb3VudCIsImdyYXBoUUxNYXhDb21wbGV4aXR5IjowLCJncmFwaFFMTWF4RGVwdGgiOjAsInN0b3BPblF1b3RhUmVhY2giOnRydWUsInNwaWtlQXJyZXN0TGltaXQiOjAsInNwaWtlQXJyZXN0VW5pdCI6bnVsbH19LCJrZXl0eXBlIjoiU0FOREJPWCIsInBlcm1pdHRlZFJlZmVyZXIiOiIiLCJzdWJzY3JpYmVkQVBJcyI6W3sic3Vic2NyaWJlclRlbmFudERvbWFpbiI6ImNhcmJvbi5zdXBlciIsIm5hbWUiOiJhcGktc3dnZXIiLCJjb250ZXh0IjoiXC9laWQtZXh0ZXJuYWxcL3YxIiwicHVibGlzaGVyIjoiYWRtaW4iLCJ2ZXJzaW9uIjoidjEiLCJzdWJzY3JpcHRpb25UaWVyIjoiR29sZCJ9XSwidG9rZW5fdHlwZSI6ImFwaUtleSIsInBlcm1pdHRlZElQIjoiIiwiaWF0IjoxNzQ2NzgyMTkyLCJqdGkiOiI3YzZlZDEzYy1iNmNmLTQwMmEtYjkzNC1kMGNmMmI2ODI4MjYifQ==.ss_fh9pujzpZ-I1D8sWR702TWnu9dq2OjaRnMaLzTXDN3lIrDoXn5-nRzEuxuZ2B3X2NugQ6A0gFdtWx3u2gvExD_v_g46gnfcah1pS5rtIk83QTiSMFt1EOt7kwaEH8njRchl9VlqvvbA3teE21iJBR5KV8wRRFd9IazO-4PlVIiuqYbEqLp4y-WvsQVTyLipgCmu_hcIBK3apshdkGnbNCykuF3Engh_7mxpthcQDOQLcpgHI8hwRu6IZthhrS_GXk-t0DImwjigICpwZnF4uesXlcLmb2I7HIYK53kq41A7ht-PmKi_1DfebimtYUTRCYfnNvPfDMjslajRotrQ=="
+            // }
+          });
+
+          if (!response.ok) {
+            throw new Error(`Erreur HTTP ${response.status}`);
+          }
+
+          const data = await response.json();
+          console.log(`Réponse ${i}:`, data);
+        } catch (error) {
+          console.error(`Erreur lors de la requête ${i}:`, error);
+        }
+      }
+    }
+  </script>
+</body>
+</html>
